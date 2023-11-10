@@ -11,7 +11,7 @@ include 'header.php';
             <?php
             if (isset($_GET['post_id'])) {
                 $post_id = $_GET["post_id"];
-                var_dump($post_id);
+               // var_dump($post_id);
                 $sql1 =' SELECT * FROM posts WHERE id ='  . $post_id;
                 $statement = $connection->query($sql1);
                 $post = $statement->fetch(PDO::FETCH_ASSOC);
@@ -20,16 +20,11 @@ include 'header.php';
                 $statement = $connection->query($sql2);
                 $comments = $statement->fetchAll(PDO::FETCH_ASSOC);
             ?>
-                <?php
-            } else {
-                echo ('post_id nije prosledjen kroz $_GET');
-            }
-            ?>
-
-            <div class="blog-post">
+                <div class="blog-post">
                 <a href="single-post.php?post_id=<?php echo ($post['id']) ?>">
                     <h2 class="blog-post-title">
-                        <?php echo ($post['title']) ?>
+                        <?php echo ($post['title']) 
+                         ?>
                     </h2>
                 </a>
                 <p class="blog-post-meta">
@@ -42,22 +37,15 @@ include 'header.php';
                     <?= $post['body'] ?>
                     </p>
                     </div>
-                    <div class="comments">
-                        <hr>
-                        <h3>Comments</h3>
-                        <ul>
-                            <?php foreach ($comments as $comment) { ?>
-                                <li>
-                                    <h4>
-                                        <?= $comment['author'] ?>
-                                    </h4>
-                                    <?= $comment['text'] ?>
-                                </li>
-                            <?php } ?>
-                        </ul>
-                    </div>
                     <?php include('comments.php') ?>
                 </div>
+                <?php
+            } else {
+                echo ('post_id nije prosledjen kroz $_GET');
+            }
+            ?>
+
+            
      
 
         <?php include('sidebar.php') ?>
