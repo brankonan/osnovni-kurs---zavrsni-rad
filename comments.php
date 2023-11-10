@@ -10,7 +10,7 @@ include 'header.php';
     <ul id="comments-list">
         <?php foreach ($comments as $comment) { ?>
             <li>
-            <li class="">
+            <li class="comment">
                 <h4>
                     <?= $comment['author'] ?>
                 </h4>   
