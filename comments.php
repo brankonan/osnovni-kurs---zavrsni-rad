@@ -1,6 +1,4 @@
-<?php
-include 'header.php';
-?>
+
 <div class="comments">
 <div class="comments">
     <hr>
