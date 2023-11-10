@@ -1,6 +1,6 @@
 <?php
 include('db_connection.php'); 
-include 'header.php';
+include ('header.php');
 
 
 $query = "SELECT * FROM posts ORDER BY Created_at DESC"; 
@@ -11,7 +11,7 @@ $posts = $statement->fetchAll(PDO::FETCH_ASSOC);
 foreach ($posts as $post):?>
 
 <div class='post'>
- <a href=/osnovni-kurs---zavrsni-rad/single-post.php?post_id=" <?= $post['id'] ?> ">
+ <a href=/single-post.php?post_id=" <?= $post['id'] ?> ">
     <h2> <?= $post['title'] ?> </h2>
 </a> 
  <p> <?= $post['body']?> </p>
