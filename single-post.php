@@ -10,13 +10,16 @@ include 'header.php';
            
             <?php
             if (isset($_GET['post_id'])) {
+                $post_id = $_GET["post_id"];
+                var_dump($post_id);
+                $sql1 =' SELECT * FROM posts WHERE id ='  . $post_id;
+                $statement = $connection->query($sql1);
+                $post = $statement->fetch(PDO::FETCH_ASSOC);
 
-                $sql1 = "SELECT * FROM posts p WHERE p.id = {$_GET['post_id']}";
-                $post = getData($sql1, $connection, $fetchAll = false);
-
-                $sql2 = "SELECT * FROM comments c WHERE c.post_id = {$_GET['post_id']}";
-                $comments = getData($sql2, $connection, $fetchAll = true);
-                ?>
+                $sql2 = "SELECT * FROM comments c WHERE c.post_id =" . $post_id;
+                $statement = $connection->query($sql2);
+                $comments = $statement->fetchAll(PDO::FETCH_ASSOC);
+            ?>
                 <?php
             } else {
                 echo ('post_id nije prosledjen kroz $_GET');
