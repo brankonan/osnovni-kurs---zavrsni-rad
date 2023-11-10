@@ -1,5 +1,6 @@
 <?php
 include('db_connection.php'); 
+include ('head.php');
 include 'header.php';
 ?>
 
@@ -36,8 +37,15 @@ include 'header.php';
                 <p>
                     <?= $post['body'] ?>
                     </p>
+
+                    <button class="btn btn-primary" onclick="confirmDelete()">Delete this post</button>
+                    <script>
+                        var post_id = <?= $post["id"]; ?>;
+                        </script>
                     </div>
                     <?php include('comments.php') ?>
+                    
+                    
                 </div>
                 <?php
             } else {
@@ -55,9 +63,6 @@ include 'header.php';
     
 </main>
 
-<?php
-include 'sidebar.php';
-?>
 <?php
 include 'footer.php';
 ?>
